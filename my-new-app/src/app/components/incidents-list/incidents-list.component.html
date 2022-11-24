@@ -1,0 +1,48 @@
+<!-- Bootstrap CSS -->
+
+<div class="container">
+  <div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+  >
+    <h1 class="h1">Incidents List</h1>
+  </div>
+  <a  class="btn btn-primary" role="button" routerLink="/add-incident">
+    <i class ="fas fa-plus-circle"></i>Add An Incident
+    </a><br>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Narrative</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Status</th>
+        <th class="text-center" scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let incident of Incidents; let i = index">
+        <th scope="row">{{ incident._id }}</th>
+        <td>{{ incident.name }}</td>
+        <td>{{ incident.date }}</td>
+        <td>{{ incident.narrative }}</td>
+        <td>{{ incident.priority }}</td>
+        <td>{{ incident.status }}</td>
+        <td class="text-center">
+          <button
+            class="btn btn-sm btn-primary"
+            routerLink="/edit-incident/{{ incident._id }}"
+          >
+            Edit
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="delete(incident._id, i)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
