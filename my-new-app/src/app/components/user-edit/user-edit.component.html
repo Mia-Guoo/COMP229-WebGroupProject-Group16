@@ -1,6 +1,6 @@
 <div class="row justify-content-center mt-5"> 
     <div class="col-md-4">
-      <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+      <form [formGroup]="updateForm1" (ngSubmit)="onUpdate()">
         <div class="form-group">
           <label>Name</label>
           <input
@@ -17,6 +17,7 @@
             class="form-control"
             type="email"
             formControlName="email"
+            
             required
           />
         </div>

@@ -48,7 +48,7 @@ export class CrudService {
 
   //Get single user
   GetUser(id: any): Observable<any> {
-    let API_URL = `${this.REST_API}/read-user/${id}`;
+    let API_URL = `${this.REST_API}/update-user/${id}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
       map((res: any) => {
         return res || {};

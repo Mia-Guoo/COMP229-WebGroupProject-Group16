@@ -43,6 +43,8 @@ incidentRoute.route("/read-incident/:id").get((req, res) => {
   });
 });
 
+
+
 //Get log
 // incidentRoute.route("/read-incident/:id").get((req, res) => {
 //   LogOfIncident.findById(req.params.id, (error, data) => {
@@ -181,9 +183,9 @@ incidentRoute.route('/').get((req, res, next) => {
   })
 })
 
-
-// Get Single User
-incidentRoute.route('/user-profile/:id').get(authorize, (req, res, next) => {
+// Get User
+incidentRoute.route("/read-user/:id").get(authorize, (req, res, next) => {
+ 
   userSchema.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -191,6 +193,19 @@ incidentRoute.route('/user-profile/:id').get(authorize, (req, res, next) => {
       res.status(200).json({
         msg: data,
       })
+    }
+  });
+});
+// Get Single User
+incidentRoute.route('/user-profile/:id').get(authorize, (req, res, next) => {
+  userSchema.findById(req.params.id,  req.params.id,
+    {
+      $set: req.body,
+    },(error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
     }
   })
 })
